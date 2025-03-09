@@ -11,7 +11,7 @@ namespace Company.G02.DAL.Dataa.Contexts
 {
     public class CompanyDbContexts : DbContext
     {
-        public CompanyDbContexts() : base()
+        public CompanyDbContexts(DbContextOptions<CompanyDbContexts> options) : base(options)
         {
             
         }
@@ -20,10 +20,10 @@ namespace Company.G02.DAL.Dataa.Contexts
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             base.OnModelCreating(modelBuilder);
         }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Server = . ; Database = CompanyG02; Trusted_Connection = True ; TrustServerCertificate = True");
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseSqlServer("Server = . ; Database = CompanyG02; Trusted_Connection = True ; TrustServerCertificate = True");
+        //}
 
         public DbSet<Department> Departments { get; set; }
     }
