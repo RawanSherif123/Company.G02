@@ -1,3 +1,9 @@
+using Company.G02.BLL.Interfaces;
+using Company.G02.BLL.Repositiries;
+using Company.G02.DAL.Dataa.Contexts;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+
 namespace Company.G02.PL
 {
     public class Program
@@ -8,7 +14,12 @@ namespace Company.G02.PL
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddScoped<IDepartmentRepository , DepartmentRepository>();
+            builder.Services.AddDbContext<CompanyDbContexts>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 
+            }); 
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
