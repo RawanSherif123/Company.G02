@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Company.G02.DAL.Dataa.Contexts
 {
-    internal class CompanyDbContexts : DbContext
+    public class CompanyDbContexts : DbContext
     {
         public CompanyDbContexts() : base()
         {
@@ -25,6 +25,6 @@ namespace Company.G02.DAL.Dataa.Contexts
             optionsBuilder.UseSqlServer("Server = . ; Database = CompanyG02; Trusted_Connection = True ; TrustServerCertificate = True");
         }
 
-        public DbSet<Department> Department { get; set; }
+        public DbSet<Department> Departments { get; set; }
     }
 }
